@@ -1,0 +1,20 @@
+Phase 1.
+
+- 4 gauges
+  - consumer
+  - investor
+  - development
+  - morale
+- contacts
+  - consumer advocate
+  - angel investor
+  - lead developmer
+  - marketing director
+  - HR 
+
+
+
+Phase 2.
+- daily schedule
+  - created automatically with morning/lunch/afternoon meeting, title only
+  - you cant cancel a meeting but you can replace it with a different meeting
