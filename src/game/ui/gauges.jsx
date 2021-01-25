@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Gauge } from "./gauge";
 import { FaUsers, FaCode, FaBeer, FaMoneyBill } from "react-icons/fa";
 
 export const Gauges = (props) => {
   const { preview, gameState } = props;
   const { cust, invest, dev, morale, stateOnYes, stateOnNo } = gameState;
-  console.log(stateOnYes);
+  // console.log(stateOnYes, stateOnNo);
   return (
     <div className={`game-ui-gauges ${preview ? preview : ""}`}>
       <Gauge label="consumer" current={cust} icon={<FaUsers />} />

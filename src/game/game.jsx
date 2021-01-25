@@ -7,31 +7,32 @@ export const Game = (props) => {
   const [gameState, setGameState] = useState(INITIAL_GAME_STATE);
   const [preview, setPreview] = useState(null); // null, 'yes', or 'no'
 
-  function updateGameState(key, value) {
-    const updatedGameState = { ...gameState, [key]: value };
+  const updateGameState = (update) => {
+    const keys = Object.keys(update);
+    const updatedGameState = { ...gameState };
+    keys.forEach((key) => {
+      updatedGameState[key] = update[key];
+    });
     setGameState(updatedGameState);
-  }
+  };
 
   useEffect(() => {
-    console.log("mounting game...");
-    updateGameState("scenarioQueue", [SCENARIOS[0]]);
-    updateGameState("scenarioIndex", 0);
+    const initialScenarios = [SCENARIOS[0]];
+    updateGameState({ scenarioQueue: initialScenarios, scenarioIndex: 0 });
   }, []);
 
   useEffect(() => {
-    console.log({ gameState });
     const nextScenario = gameState.scenarioQueue[gameState.scenarioIndex];
-    console.log(nextScenario, gameState);
     if (!nextScenario) return;
-    const stateOnYes = nextScenario.onYes(gameState);
-    const stateOnNo = nextScenario.onNo(gameState);
-    updateGameState("stateOnYes", stateOnYes);
-    updateGameState("stateOnNo", stateOnNo);
+    const newStateOnYes =
+      nextScenario.onYes && nextScenario.onYes({ ...gameState });
+    const newStateOnNo =
+      nextScenario.onNo && nextScenario.onNo({ ...gameState });
+    updateGameState({ stateOnYes: newStateOnYes, stateOnNo: newStateOnNo });
   }, [gameState.scenarioIndex]);
 
   const { scenarioIndex, scenarioQueue } = gameState;
   const currentScenario = scenarioQueue[scenarioIndex];
-
   return (
     <div className="game-container">
       <Scenario
