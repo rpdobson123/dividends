@@ -25,7 +25,7 @@
   place-content: center;
   width: 100%;
   max-width: 60%;
-  margin: 24px auto auto;
+  margin: 12px auto 30px auto;
 }
 .gauge-container {
   width: 400px;
@@ -178,4 +178,12 @@
 }
 .button-container .action-button.no-button:hover {
   color: red;
+}
+
+.footer {
+  color: white;
+  position: absolute;
+  font-size: 12px;
+  left: 24px;
+  bottom: 12px;
 }

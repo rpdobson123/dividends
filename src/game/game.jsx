@@ -104,6 +104,9 @@ export const Game = (props) => {
         gameState={gameState}
         updateGameState={updateGameState}
       />
+      <a href="https://github.com/rpdobson123" className="footer">
+        Game by Richard Dobson
+      </a>
     </div>
   );
 };
