@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Character } from "./ui/character";
+import { Character } from "./character";
 import { FaUsers, FaCode, FaBeer, FaMoneyBill } from "react-icons/fa";
 
 export const Scenario = (props) => {

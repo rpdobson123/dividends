@@ -1,0 +1,48 @@
+import React from "react";
+import { FaUsers, FaCode, FaBeer, FaMoneyBill } from "react-icons/fa";
+const Code = () => <FaCode color="blue" />;
+const Beer = () => <FaBeer color="yellow" />;
+const Bill = () => <FaMoneyBill color="maroon" />;
+const User = () => <FaUsers color="green" />;
+
+const updateGS = (gs, key, shift) => {
+  let updatedValue = gs[key] + shift;
+  if (updatedValue > 100) updatedValue = 100;
+  if (updatedValue < 0) updatedValue = 0;
+  return { [key]: updatedValue };
+};
+
+/* prettier-ignore */
+export const EFFECTS = {
+  DEV_UP_S: { effect:(gs) => updateGS(gs, "dev", 5), render: () => <span><Code/>+</span>},
+  DEV_UP_M: { effect:(gs) => updateGS(gs, "dev", 10), render: () => <span><Code/>++</span>},
+  DEV_UP_L: { effect:(gs) => updateGS(gs, "dev", 15), render: () => <span><Code/>+++</span>},
+
+  INV_UP_S: { effect:(gs) => updateGS(gs, "inv", 5), render: () => <span><Bill/>+</span>},
+  INV_UP_M: { effect:(gs) => updateGS(gs, "inv", 10), render: () => <span><Bill/>++</span>},
+  INV_UP_L: { effect:(gs) => updateGS(gs, "inv", 15), render: () => <span><Bill/>+++</span>},
+
+  CUS_UP_S: { effect:(gs) => updateGS(gs, "cus", 5), render: () => <span><User/>+</span>},
+  CUS_UP_M: { effect:(gs) => updateGS(gs, "cus", 10), render: () => <span><User/>++</span>},
+  CUS_UP_L: { effect:(gs) => updateGS(gs, "cus", 15), render: () => <span><User/>+++</span>},
+
+  MOR_UP_S: { effect:(gs) => updateGS(gs, "mor", 5), render: () => <span><Beer/>+</span>},
+  MOR_UP_M: { effect:(gs) => updateGS(gs, "mor", 10), render: () => <span><Beer/>++</span>},
+  MOR_UP_L: { effect:(gs) => updateGS(gs, "mor", 15), render: () => <span><Beer/>+++</span>},
+
+  DEV_DOWN_S: { effect:(gs) => updateGS(gs, "dev", -5), render: () => <span><Code/>-</span>},
+  DEV_DOWN_M: { effect:(gs) => updateGS(gs, "dev", -10), render: () => <span><Code/>--</span>},
+  DEV_DOWN_L: { effect:(gs) => updateGS(gs, "dev", -15), render: () => <span><Code/>---</span>},
+
+  INV_DOWN_S: { effect:(gs) => updateGS(gs, "inv", -5), render: () => <span><Bill/>-</span>},
+  INV_DOWN_M: { effect:(gs) => updateGS(gs, "inv", -10), render: () => <span><Bill/>--</span>},
+  INV_DOWN_L: { effect:(gs) => updateGS(gs, "inv", -15), render: () => <span><Bill/>---</span>},
+
+  CUS_DOWN_S: { effect:(gs) => updateGS(gs, "cus", -5), render: () => <span><User/>-</span>},
+  CUS_DOWN_M: { effect:(gs) => updateGS(gs, "cus", -10), render: () => <span><User/>--</span>},
+  CUS_DOWN_L: { effect:(gs) => updateGS(gs, "cus", -15), render: () => <span><User/>---</span>},
+
+  MOR_DOWN_S: { effect:(gs) => updateGS(gs, "mor", -5), render: () => <span><Beer/>-</span>},
+  MOR_DOWN_M: { effect:(gs) => updateGS(gs, "mor", -10), render: () => <span><Beer/>--</span>},
+  MOR_DOWN_L: { effect:(gs) => updateGS(gs, "mor", -15), render: () => <span><Beer/>---</span>},
+};
