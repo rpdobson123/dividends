@@ -23,12 +23,19 @@ body {
 .game-ui-gauges {
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);
-  grid-gap: 20px;
   place-content: center;
   width: 100%;
   max-width: 60%;
   margin: 12px auto 30px auto;
   padding-bottom: 35px;
+}
+.gauge-label {
+  font-size: 14px;
+  font-weight: 700;
+  position: relative;
+  text-align: right;
+  top: -7px;
+  right: 5px;
 }
 .gauge-container {
   width: 400px;
