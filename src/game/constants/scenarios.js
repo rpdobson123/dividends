@@ -23,13 +23,6 @@ export const CHARACTERS = {
 
 export const SCENARIOS = [
   {
-    id: 0,
-    character: CHARACTERS.C_MARKETING,
-    text: `We want to have a demo ready for the Nickel Arcade Expo. Can we crunch and get it done?`,
-    onYes: [EFFECTS.CUS_UP_M, EFFECTS.MOR_DOWN_M],
-    onNo: [EFFECTS.DEV_UP_S, EFFECTS.CUS_DOWN_S],
-  },
-  {
     id: 1,
     character: CHARACTERS.C_DEV,
     text: `Our engine needs some TLC. The code is getting sloppier every day we sit idle`,
@@ -118,4 +111,32 @@ export const SCENARIOS = [
     onYes: [EFFECTS.INV_UP_S, EFFECTS.MOR_DOWN_S],
     onNo: [EFFECTS.MOR_UP_S, EFFECTS.INV_DOWN_S],
   },
+  {
+    id: 13,
+    character: CHARACTERS.C_DESIGNER,
+    text: `We had this idea for 'horse cape physics' - GameDonkey will probably put us in a video if we have horse cape physics, which is free PR. Can we make 'horse cape physics' happen?`,
+    onYes: [EFFECTS.CUS_UP_M, EFFECTS.DEV_DOWN_S],
+    onNo: [],
+  },
+  {
+    id: 14,
+    character: CHARACTERS.C_MARKETING,
+    text: `We want to have a demo ready for the Nickel Arcade Expo. Can we crunch and get it done?`,
+    onYes: [EFFECTS.CUS_UP_M, EFFECTS.MOR_DOWN_M],
+    onNo: [EFFECTS.DEV_UP_S, EFFECTS.CUS_DOWN_S],
+  },
+  {
+    id: 15,
+    character: CHARACTERS.C_MARKETING,
+    text: `There's a charity speedrun this week - I know we have stuff to do, but it'd be fun to go and we can at least wear branded shirts.`,
+    onYes: [EFFECTS.CUS_UP_S, EFFECTS.MOR_UP_S],
+    onNo: [EFFECTS.DEV_UP_M],
+  },
+  // {
+  //   id: ,
+  //   character: CHARACTERS.C_,
+  //   text: ``,
+  //   onYes: [EFFECTS.INV_UP_S],
+  //   onNo: [EFFECTS.MOR_UP_S],
+  // },
 ];
