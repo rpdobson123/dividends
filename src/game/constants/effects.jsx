@@ -46,3 +46,24 @@ export const EFFECTS = {
   MOR_DOWN_M: { effect:(gs) => updateGS(gs, "mor", -10), render: () => <span><Beer/>--</span>},
   MOR_DOWN_L: { effect:(gs) => updateGS(gs, "mor", -15), render: () => <span><Beer/>---</span>},
 };
+
+export const CONDITIONS = {
+  MOR_GT: (val) => ({ gs }) => val <= gs.mor,
+  MOR_LT: (val) => ({ gs }) => val >= gs.mor,
+
+  DEV_GT: (val) => ({ gs }) => val <= gs.dev,
+  DEV_LT: (val) => ({ gs }) => val >= gs.dev,
+
+  INV_GT: (val) => ({ gs }) => val <= gs.inv,
+  INV_LT: (val) => ({ gs }) => val >= gs.inv,
+
+  CUS_GT: (val) => ({ gs }) => val <= gs.cus,
+  CUS_LT: (val) => ({ gs }) => val >= gs.cus,
+
+  COMPLETED: (id) => ({ completed_y, completed_n }) =>
+    [...completed_y, ...completed_n].includes(id),
+
+  COMPLETED_Y: (id) => ({ completed_y }) => completed_y.includes(id),
+
+  COMPLETED_N: (id) => ({ completed_n }) => completed_n.includes(id),
+};

@@ -3,7 +3,7 @@ import IMG_DEV from "../../assets/lead-dev.png";
 import IMG_INVESTOR from "../../assets/investor.png";
 import IMG_MARKETING from "../../assets/marketing.png";
 import IMG_DESIGNER from "../../assets/design.png";
-import { EFFECTS } from "./effects";
+import { EFFECTS, CONDITIONS } from "./effects";
 
 export const CHARACTERS = {
   C_DEV: { id: 1, name: "Dave Greyber - Systems Engineer", image: IMG_DEV },
@@ -23,7 +23,15 @@ export const CHARACTERS = {
 
 export const SCENARIOS = [
   {
+    id: 0,
+    character: CHARACTERS.C_DEV,
+    text: `I found out there's a product that can generate trees for the game. I'm just about to start working on a tree engine. Can we just buy this thing?`,
+    onYes: [EFFECTS.DEV_UP_M, EFFECTS.INV_DOWN_M],
+    onNo: [],
+  },
+  {
     id: 1,
+    repeatable: true,
     character: CHARACTERS.C_DEV,
     text: `Our engine needs some TLC. The code is getting sloppier every day we sit idle`,
     onYes: [EFFECTS.DEV_UP_S, EFFECTS.CUS_UP_S, EFFECTS.INV_DOWN_S],
@@ -31,13 +39,16 @@ export const SCENARIOS = [
   },
   {
     id: 2,
+    repeatable: true,
     character: CHARACTERS.C_HR,
     text: `I've seen a few employees walking around visibly upset. We should pay for a happy hour to try to lighten the mood.`,
+    conditions: [CONDITIONS.MOR_LT(30)],
     onYes: [EFFECTS.MOR_UP_S, EFFECTS.INV_DOWN_S],
     onNo: [EFFECTS.MOR_DOWN_S],
   },
   {
     id: 3,
+    priority: 3,
     character: CHARACTERS.C_INVESTOR,
     text: `All I hear is 'blockchain'. Do we have blockchain? We need blockchain.`,
     onYes: [EFFECTS.INV_UP_M, EFFECTS.DEV_DOWN_M],
@@ -45,8 +56,9 @@ export const SCENARIOS = [
   },
   {
     id: 4,
+    repeatable: true,
     character: CHARACTERS.C_HR,
-    text: `Are the devs keeping timecards? Kate wants to know where the money goes. Can you get them to log hours?`,
+    text: `Are the devs still keeping timecards? Kate wants to know where the money goes. Can you get them to log hours?`,
     onYes: [EFFECTS.INV_UP_M, EFFECTS.DEV_DOWN_S],
     onNo: [EFFECTS.MOR_UP_S, EFFECTS.INV_DOWN_S],
   },
@@ -87,6 +99,7 @@ export const SCENARIOS = [
   },
   {
     id: 10,
+    repeatable: true,
     character: CHARACTERS.C_DEV,
     text: `We've got bugs. I know we want features, but we have bugs. Bugs before Features?`,
     onYes: [EFFECTS.DEV_UP_S],
@@ -131,6 +144,42 @@ export const SCENARIOS = [
     text: `There's a charity speedrun this week - I know we have stuff to do, but it'd be fun to go and we can at least wear branded shirts.`,
     onYes: [EFFECTS.CUS_UP_S, EFFECTS.MOR_UP_S],
     onNo: [EFFECTS.DEV_UP_M],
+  },
+  {
+    id: 16,
+    character: CHARACTERS.C_DEV,
+    priority: 5,
+    conditions: [CONDITIONS.COMPLETED_Y(15)],
+    text: `Charity speedrun event... that isn't my thing. Can I pretend to be sick and work from home instead? It can stay between us.`,
+    onYes: [EFFECTS.DEV_UP_S],
+    onNo: [EFFECTS.MOR_DOWN_S],
+  },
+  {
+    id: 17,
+    character: CHARACTERS.C_MARKETING,
+    priority: 5,
+    conditions: [CONDITIONS.COMPLETED_Y(15), CONDITIONS.COMPLETED(16)],
+    text: `Hey - some IGM folk saw our shirts and wanted to interview Dave. Is he here?`,
+    onYes: [],
+    onNo: [EFFECTS.MOR_DOWN_S],
+  },
+  {
+    id: 18,
+    character: CHARACTERS.C_MARKETING,
+    priority: 5,
+    conditions: [CONDITIONS.COMPLETED_Y(16), CONDITIONS.COMPLETED_Y(17)],
+    text: `I just wasted that guys time - turns out Dave's sick today. Do you know how dumb that makes me look?`,
+    onYes: [EFFECTS.CUS_DOWN_M, EFFECTS.MOR_DOWN_S],
+    onNo: [EFFECTS.CUS_DOWN_M, EFFECTS.MOR_DOWN_S],
+  },
+  {
+    id: 19,
+    character: CHARACTERS.C_MARKETING,
+    priority: 5,
+    conditions: [CONDITIONS.COMPLETED_N(16), CONDITIONS.COMPLETED_Y(17)],
+    text: `Dave did AWESOME in the interview dude. Wishlist numbers went up - you think word spreads that quickly?`,
+    onYes: [EFFECTS.CUS_UP_M],
+    onNo: [EFFECTS.CUS_UP_M],
   },
   // {
   //   id: ,
