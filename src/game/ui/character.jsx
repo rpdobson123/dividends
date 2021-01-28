@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export const Character = (props) => {
   const { character } = props;
@@ -7,7 +7,7 @@ export const Character = (props) => {
   return (
     <div className={`character-container`}>
       <div className="character-container-image">
-        <img src={image} />
+        <img alt="character portrait" src={image} />
       </div>
       <div className="character-container-name">{name}</div>
     </div>

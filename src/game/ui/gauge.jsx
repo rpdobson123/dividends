@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 export const Gauge = (props) => {
   const { current, label, icon } = props;
   return (

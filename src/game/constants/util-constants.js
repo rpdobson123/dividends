@@ -1,5 +1,3 @@
-import { SCENARIOS } from "./scenarios";
-
 export const GetInitialGameState = () => ({
   cus: 80,
   inv: 80,

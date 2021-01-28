@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { GetInitialGameState } from "./constants/util-constants";
 import { Gauges } from "./ui/gauges";
+import { ActionBar } from "./ui/action-bar";
 import { Scenario } from "./ui/scenario";
-import { rand, sortByKey } from "../util";
+import { rand } from "../util";
 import { SCENARIOS } from "./constants/scenarios";
 
 // const INITIAL_SCENARIOS = [SCENARIOS[SCENARIOS.length - 1]];
@@ -32,12 +33,16 @@ export const Game = (props) => {
 
   const yesPreview = (
     <div className="preview-effects-yes">
-      {currentScenario.onYes.map((effect) => effect.render())}
+      {currentScenario.onYes.map((effect, index) => (
+        <React.Fragment key={index}>{effect.render()}</React.Fragment>
+      ))}
     </div>
   );
   const noPreview = (
     <div className="preview-effects-no">
-      {currentScenario.onNo.map((effect) => effect.render())}
+      {currentScenario.onNo.map((effect, index) => (
+        <React.Fragment key={index}>{effect.render()}</React.Fragment>
+      ))}
     </div>
   );
 
@@ -113,45 +118,48 @@ export const Game = (props) => {
 
   // console.log(completedScenarios);
   return (
-    <div className="game-container">
-      <Scenario
-        gameState={gameState}
-        updateGameState={gameState}
-        scenario={currentScenario}
-      />
-      <div className="button-container">
-        <div className="yes-button-container">
-          <div
-            onMouseEnter={() => setPreview("yes")}
-            onMouseLeave={() => setPreview(null)}
-            onClick={onYes}
-            className="action-button yes-button"
-          >
-            <FaThumbsUp />
+    <>
+      <ActionBar />
+      <div className="game-container">
+        <Scenario
+          gameState={gameState}
+          updateGameState={gameState}
+          scenario={currentScenario}
+        />
+        <div className="button-container">
+          <div className="yes-button-container">
+            <div
+              onMouseEnter={() => setPreview("yes")}
+              onMouseLeave={() => setPreview(null)}
+              onClick={onYes}
+              className="action-button yes-button"
+            >
+              <FaThumbsUp />
+            </div>
+            {yesPreview}
           </div>
-          {yesPreview}
-        </div>
 
-        <div className="no-button-container">
-          <div
-            onMouseEnter={() => setPreview("no")}
-            onMouseLeave={() => setPreview(null)}
-            onClick={onNo}
-            className="action-button no-button"
-          >
-            <FaThumbsDown />
+          <div className="no-button-container">
+            <div
+              onMouseEnter={() => setPreview("no")}
+              onMouseLeave={() => setPreview(null)}
+              onClick={onNo}
+              className="action-button no-button"
+            >
+              <FaThumbsDown />
+            </div>
+            {noPreview}
           </div>
-          {noPreview}
         </div>
+        <Gauges
+          preview={preview}
+          gameState={gameState}
+          updateGameState={updateGameState}
+        />
+        <a href="https://github.com/rpdobson123" className="footer">
+          Game by Richard Dobson
+        </a>
       </div>
-      <Gauges
-        preview={preview}
-        gameState={gameState}
-        updateGameState={updateGameState}
-      />
-      <a href="https://github.com/rpdobson123" className="footer">
-        Game by Richard Dobson
-      </a>
-    </div>
+    </>
   );
 };

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Character } from "./character";
-import { FaUsers, FaCode, FaBeer, FaMoneyBill } from "react-icons/fa";
 
 export const Scenario = (props) => {
   const { scenario } = props;

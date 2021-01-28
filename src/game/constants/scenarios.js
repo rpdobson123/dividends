@@ -6,17 +6,29 @@ import IMG_DESIGNER from "../../assets/design.png";
 import { EFFECTS, CONDITIONS } from "./effects";
 
 export const CHARACTERS = {
-  C_DEV: { id: 1, name: "Dave Greyber - Systems Engineer", image: IMG_DEV },
+  C_DEV: {
+    id: 1,
+    name: "Dave Kodewel",
+    title: "Systems Engineer",
+    image: IMG_DEV,
+  },
   C_MARKETING: {
     id: 2,
-    name: "Bobby Sails - Marketing",
+    name: "Marcus Sails",
+    title: "Marketing",
     image: IMG_MARKETING,
   },
-  C_INVESTOR: { id: 3, name: "Kate Munee - Investor", image: IMG_INVESTOR },
-  C_HR: { id: 4, name: "Tim Morel - HR", image: IMG_HR },
+  C_INVESTOR: {
+    id: 3,
+    name: "Vicki Roi",
+    title: "Investor",
+    image: IMG_INVESTOR,
+  },
+  C_HR: { id: 4, name: "Tim Morel", title: "HR", image: IMG_HR },
   C_DESIGNER: {
     id: 5,
-    name: "Bree Instorm - Game Designer",
+    name: "Bree Instorm",
+    title: "Game Designer",
     image: IMG_DESIGNER,
   },
 };
@@ -58,7 +70,7 @@ export const SCENARIOS = [
     id: 4,
     repeatable: true,
     character: CHARACTERS.C_HR,
-    text: `Are the devs still keeping timecards? Kate wants to know where the money goes. Can you get them to log hours?`,
+    text: `Are the devs still keeping timecards? Vicki wants to know where the money goes. Can you get them to log hours?`,
     onYes: [EFFECTS.INV_UP_M, EFFECTS.DEV_DOWN_S],
     onNo: [EFFECTS.MOR_UP_S, EFFECTS.INV_DOWN_S],
   },
