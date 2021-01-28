@@ -5,11 +5,16 @@ export const ActionBar = (props) => {
   const [showRoster, setShowRoster] = useState(false);
 
   return (
-    <div className="action-bar">
-      <div onClick={() => setShowRoster(!showRoster)} className="roster-button">
-        <FaAddressBook />
+    <>
+      <div className="action-bar">
+        <div
+          onClick={() => setShowRoster(!showRoster)}
+          className="roster-button"
+        >
+          <FaAddressBook />
+        </div>
       </div>
       {showRoster && <Roster onClose={() => setShowRoster(false)} />}
-    </div>
+    </>
   );
 };

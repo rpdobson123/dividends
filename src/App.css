@@ -198,8 +198,6 @@ body {
   flex-direction: column;
   left: 20px;
   top: 20px;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
 }
 .action-bar .roster-button:hover {
   border: 2px solid black;
@@ -223,6 +221,9 @@ body {
 
 /*  roster */
 .employee-roster-container {
+  position: absolute;
+  left: 50px;
+  top: 20px;
   margin: 10px;
   background-color: palegoldenrod;
   color: black;
