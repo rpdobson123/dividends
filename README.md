@@ -1,3 +1,7 @@
+A tongue-in-cheek game dev simulator in the vein of "Reigns"
+
+See this in action: https://dev-dividends.herokuapp.com/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
