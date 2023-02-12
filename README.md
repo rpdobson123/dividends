@@ -1,6 +1,6 @@
 A tongue-in-cheek game dev simulator in the vein of "Reigns"
 
-Test
+Test 1
 
 See this in action: https://dev-dividends.herokuapp.com/
 
